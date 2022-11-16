@@ -1,27 +1,62 @@
-#include "shell.h"
+#include "printf.h"
 
 /**
- * print_number - Prints an unsigned number
- * @n: unsigned integer to be printed
- * Return: The amount of numbers printed
- */
-int print_number(int n)
+* print_number - print number in output
+*
+* @n: integer
+* @size: size for printf
+* Return: nothing
+*/
+void print_number(int n, int *size)
 {
-	int div;
-	int len;
-	unsigned int num;
+	unsigned int n_1;
 
-	div = 1;
-	len = 0;
-	num = n;
-	for (; num / div > 9; )
-		div *= 10;
-	for (; div != 0; )
+	if (n < 0)
 	{
-		len += _write_char('0' + num / div);
-		num %= div;
-		div /= 10;
+		n *= -1;
+		*size += 1;
+		_putchar('-');
 	}
+	n_1 = n;
+	if (n_1 / 10)
+	{
+		print_number(n_1 / 10, size);
+	}
+	*size += 1;
+	_putchar((n_1 % 10) + '0');
+}
 
-	return (len);
+/**
+* print_number_u - print number in output
+*
+* @n: integer
+* @size: size for printf
+* Return: nothing
+*/
+void print_number_u(unsigned int n, unsigned int  *size)
+{
+	if (n / 10)
+	{
+		print_number_u(n / 10, size);
+	}
+	*size += 1;
+	_putchar((n % 10) + '0');
+}
+
+/**
+* hex_addr - printf addrresse lowercase hexadecimal
+* @addr: address decimal
+* @size: size for printf
+*/
+void hex_addr(unsigned long int addr, int *size)
+{
+	if (addr / 16)
+	{
+		hex_low(addr / 16, size);
+	}
+	*size += 1;
+	if (addr % 16 < 10)
+		_putchar('0' + (addr) % 16);
+	else
+		_putchar('a' + (((addr) % 16) - 10));
 }
