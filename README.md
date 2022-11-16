@@ -1,34 +1,57 @@
-Project 0x15 - Simple Shell
-Welcome to the repository for the simplest of simple shells. This is the final project for the first trimester of the Holberton New Haven.
+Project Simple Shell
+This project is for the end of semester project of Holberton School. It's a reproduction of the Shell, the Linux command interpreter but in a simplified version.
 
-Getting Started
-Pull the latest version of the MASTER branch, and compile all .c and .h files.
-
-Prerequisites
-Ubuntu LTS v14.04
-GCC installed on terminal.
-Basic understanding of C/UNIX-based shells.
-Installing
-Pull "master" branch from currernt repository.
-git pull master https://github.com/jxvo/simple_shell
-Compile all C and header files in the root directory.
-$ gcc -Wall -Wextra -Werror -pedantic -o haash
-Run the output file locally to enter into our custom simple shell.
-$ ./hsh
-Enjoy using the simple shell!
-$ echo "hello, world!"
-Running the tests
-Explain how to run the automated tests for this system
-
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
-Built With
-Emacs - The Obvious Choice in text editors.
-Vagrant - Dev environment management.
-VirtualBox - VM management.
+How it works ?
+We have a prompt "$ ".
+The program waits for the user's command.
+The command is separated into string arrays with the space as delimiter.
+It searches if the command is a built-in. If yes, it executes it. Else it continues.
+It searches if the input of the user is the absolute path of the command. If yes, it executes. Else, it searches the absolute path and returns it.
+It executes the command. And restart to the step 1.
+Learning objectives
+- Who designed and implemented the original Unix operating system
+- Who wrote the first version of the UNIX shell
+- Who invented the B programming language (the direct predecessor to the C programming language)
+- Who is Ken Thompson
+- How does a shell work
+- What is a pid and a ppid
+- How to manipulate the environment of the current process
+- What is the difference between a function and a system call
+- How to create processes
+- What are the three prototypes of main
+- How does the shell use the PATH to find the programs
+- How to execute another program with the execve system call
+- How to suspend the execution of a process until one of its children terminates
+- What is EOF / “end-of-file”?
+List of allowed functions and systems calls
+- access (man 2 access)
+- chdir (man 2 chdir)
+- close (man 2 close)
+- closedir (man 3 closedir)
+- execve (man 2 execve)
+- exit (man 3 exit)
+- _exit (man 2 _exit)
+- fflush (man 3 fflush)
+- fork (man 2 fork)
+- free (man 3 free)
+- getcwd (man 3 getcwd)
+- getline (man 3 getline)
+- getpid (man 2 getpid)
+- isatty (man 3 isatty)
+- kill (man 2 kill)
+- malloc (man 3 malloc)
+- open (man 2 open)
+- opendir (man 3 opendir)
+- perror (man 3 perror)
+- read (man 2 read)
+- readdir (man 3 readdir)
+- signal (man 2 signal)
+- stat (__xstat) (man 2 stat)
+- lstat (__lxstat) (man 2 lstat)
+- fstat (__fxstat) (man 2 fstat)
+- strtok (man 3 strtok)
+- wait (man 2 wait)
+- waitpid (man 2 waitpid)
+- wait3 (man 2 wait3)
+- wait4 (man 2 wait4)
+- write (man 2 write)
