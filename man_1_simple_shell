@@ -1,61 +1,76 @@
-./" Manpage for simple_shell"
-.TH man 1 "10 December 2021" "1.0" "HSH"
-
+TH man 1 "19 April 2019" "Simple Shell"
 .SH NAME
-HSH - copy of shell
-
+ bsh \- BlueShell command interpreter (shell)
 .SH SYNOPSIS
-.B #include "main.h"
-
-.B $ [COMMAND]  [OPTION];
-
+.B ./bsh
+ \fb\ \fI[command]\fR [arguments ...]
 .SH DESCRIPTION
-This program is like the famous shell, a Linux command line interpreter between the user and the kernel and executes programs called commands. Of course, 
-this is a simplified version and you will find just below the usable commands.
+ The \fB\ bsh \fR (Simple Shell) is a simple UNIX command line interpreter (Holberton School Project 0x15-Simple_Shell)
 
-.SH COMMANDS
-You can insert your command directly in interactive mode from the program : ls
-Or in non-interactive mode on your own shell : "echo "/bin/ls" | ./hsh"
+.SH Overview
+A shell is a command-line interpreter that executes commands read from a terminal.\
+BlueShell is a basic implementation of a command line similar to
+.B bash
+or
+.B dash.
+.B Simple Shell
+can be used in both interactive and non-interactive mode.
+The user input line is vectorized, each token is separated by spaces.\
+The first argument at tokens[0] is understood by the shell to be a command.\
+The shell will first match the command token against a list of built-in programs,\
+then the program will check the $PATH and run that command if it can be found.\
+Remaining tokens are argument tokens and are treated as modifiers or options.
+
+.SH Built-ins
+BlueShell has implemented the following built-ins:
+.TP
+.B -cd
+changes current directory of the process. syntax:
+.B cd [DIRECTORY]
+.TP
+
+.B -exit
+to exit from the shell you type
+.B exit
+and press
+.B ENTER.
 
 .TP
-.B
-ls
-list environment files
+.B -env
+Prints the current enviornment
 
-.TP
-.B
-cat
-displays the content of the file
+.SH USAGE / COMPILATION
+All files are to be compiled using "gcc -Wall -Werror -Wextra -pedantic *. -o bsh"
 
-.TP
-.B
-env
-Prints actual environment
+.I builtin.c
+- Contains the following built-ins for the shell:
+.B freeArray, cd, exit, signal handle for control c
 
-.TP
-.B
-exit
-Exit the program
+.I bsh.c
+- Simple Shell
 
-.TP
-.B
-cd
-change directory
+.I helper_functions.c
+- Contains all helper functions for simple shell:
+.B _strlen, _strncpy, _strcmp, _strcpy
 
-.SH EXAMPLES
-.B ls -l /test or /bin/ls -l /test
+.I path.c
+- Finds the string in **env that contains the path
 
-test.c bonjour.c hola.c main.h
+.I vect.c
+- Takes a string and puts it into a vector array
 
-.B cat bonjour.c or /bin/cat bonjour.c
+.I shell.h
+- Contains all prototypes for base functions, built-ins, and global variables
 
-This is the content of the file bonjour.c
+.SH Executable
+.I bsh
 
 
-.SH BUGS
-Lot of little bugs we have to fix.
 
 .SH SEE ALSO
-man sh
+.I sh(1)
 
-.SH CREDITS
+.SH BUGS
+
+Report bugs pertaining to the shell to https://github.com/jxvo and https://github.com/TyEdge
+.SH AUTHORS
